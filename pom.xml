@@ -14,7 +14,7 @@
     <name>desafioquality</name>
     <description>Desafio Quality - Spring + Testes com JUnit5</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
     </properties>
     <dependencies>
         <dependency>
