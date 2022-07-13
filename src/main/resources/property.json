@@ -1,0 +1,13 @@
+{
+  "id" : 1,
+  "propName" : "Casa da Amanda",
+  "propDistrict" : {
+    "name" : "Ipiranga",
+    "valueDistrictM2" : 1000.0
+  },
+  "roomList" : [ {
+    "roomName" : "Banheiro",
+    "roomWidth" : 10.0,
+    "roomLength" : 10.0
+  } ]
+}
