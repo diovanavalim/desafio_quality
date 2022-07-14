@@ -1,18 +1,19 @@
 package com.dh.mercadolivre.desafioquality.handler;
 
 import com.dh.mercadolivre.desafioquality.exceptions.ExceptionDetails;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
+import com.dh.mercadolivre.desafioquality.exceptions.ServerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.LocalDateTime;
 
 @ControllerAdvice
-public class ExHandler extends ResponseEntityExceptionHandler {
+public class ExHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ExceptionDetails> methodArgumentNotValidExceptionHandler(MethodArgumentNotValidException
@@ -40,5 +41,31 @@ public class ExHandler extends ResponseEntityExceptionHandler {
                         .timestamp(LocalDateTime.now())
                         .build(),
                 HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ServerException.class)
+    public ResponseEntity<ExceptionDetails> serverExceptionHandler(ServerException exception) {
+
+        return new ResponseEntity<ExceptionDetails>(
+                ExceptionDetails.builder()
+                        .title("Internal Server Error")
+                        .message(exception.getMessage())
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        .timestamp(LocalDateTime.now())
+                        .build(),
+                HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    @ExceptionHandler(PropertyNotFoundException.class)
+    public ResponseEntity<ExceptionDetails> propertyNotFoundHandler(PropertyNotFoundException exception) {
+
+        return new ResponseEntity<ExceptionDetails>(
+                ExceptionDetails.builder()
+                        .title("Property Not Found")
+                        .message(exception.getMessage())
+                        .status(HttpStatus.NOT_FOUND.value())
+                        .timestamp(LocalDateTime.now())
+                        .build(),
+                HttpStatus.NOT_FOUND);
     }
 }
