@@ -1,7 +1,6 @@
 package com.dh.mercadolivre.desafioquality.service;
 
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
-import com.dh.mercadolivre.desafioquality.exceptions.ServerException;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
