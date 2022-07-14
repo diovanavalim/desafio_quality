@@ -72,6 +72,7 @@ public class FileHandler<T> {
         return primaryList;
     }
 
+    //*
     public boolean removeObjectFromFile(String filePath, String classType, int index) {
         Class<?> clz;
 
