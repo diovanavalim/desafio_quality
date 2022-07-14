@@ -2,7 +2,7 @@
 <p align="center">Repositório criado para hospedar o código do segundo Touchpoint do Bootcamp IT Java.</p>
 
 <p align="center">
-  <img align="" alt="mascoteJava" src="https://github.com/amarinellif/boot-dh-testes/blob/main/developer-tester.gif" height="100%" width="100%" />
+  <img align="" alt="mascoteJava" src="https://github.com/amarinellif/boot-dh-testes/blob/main/developer-tester.gif" height="70%" width="70%" />
 </p>
 
 <p align="center">
