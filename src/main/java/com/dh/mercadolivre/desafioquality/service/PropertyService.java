@@ -55,7 +55,13 @@ public class PropertyService implements IPropertyService {
 	}
 
 	public Room getLargestRoomFromId(Long id){
-		Property FoundProperty = repository.findPropertyById(id);
+		Property FoundProperty = propertyRep.findPropertyById(id);
 		return findLargestRoomAmonglist(FoundProperty.getRoomList());
 	}
+
+	private List<RoomAreaDto> getAreaRooms(Long idProperty) {
+        Property property = propertyRep.findPropertyById(idProperty);
+        List<RoomAreaDto> result = calculatePropertyArea(property);
+        return result;
+    }
 }
