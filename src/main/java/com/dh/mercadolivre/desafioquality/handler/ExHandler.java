@@ -1,7 +1,8 @@
 package com.dh.mercadolivre.desafioquality.handler;
 
 import com.dh.mercadolivre.desafioquality.exceptions.ExceptionDetails;
-import com.dh.mercadolivre.desafioquality.exceptions.NotFoundPropertyException;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
+import com.dh.mercadolivre.desafioquality.exceptions.ServerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -42,17 +43,29 @@ public class ExHandler {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NotFoundPropertyException.class)
-    public ResponseEntity<ExceptionDetails> handlerNotFoundPropertyEx(NotFoundPropertyException exception) {
-        return new ResponseEntity<>(
+    @ExceptionHandler(ServerException.class)
+    public ResponseEntity<ExceptionDetails> serverExceptionHandler(ServerException exception) {
+
+        return new ResponseEntity<ExceptionDetails>(
                 ExceptionDetails.builder()
-                        .title("Property not Found")
-                        .status(HttpStatus.NOT_FOUND.value())
+                        .title("Internal Server Error")
                         .message(exception.getMessage())
+                        .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                         .timestamp(LocalDateTime.now())
-                .build(),
-            HttpStatus.NOT_FOUND
-        );
+                        .build(),
+                HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    @ExceptionHandler(PropertyNotFoundException.class)
+    public ResponseEntity<ExceptionDetails> propertyNotFoundHandler(PropertyNotFoundException exception) {
+
+        return new ResponseEntity<ExceptionDetails>(
+                ExceptionDetails.builder()
+                        .title("Property Not Found")
+                        .message(exception.getMessage())
+                        .status(HttpStatus.NOT_FOUND.value())
+                        .timestamp(LocalDateTime.now())
+                        .build(),
+                HttpStatus.NOT_FOUND);
+    }
 }
