@@ -18,7 +18,7 @@
 
 ## 🖊 Sobre o Projeto
 <p> 
-O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa possui as funcionalidades de cadastro e recuperação de produto, cliente e pedido, incluindo a gestão de estoque. 
+O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa viabiliza a partir de um banco de imóveis cadastrados com nome, bairro (nome e valor do metro quadrado) e uma lista de cômodos (nome, comprimento e largura), retornar o nome, bairro, área total, o preço total, a lista de cômodos com suas respectivas áreas e o maior cômodo da propriedade.
 </p>
 
 ___
