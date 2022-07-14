@@ -22,7 +22,7 @@ public class PropertyRepository {
     public Property saveProperty(Property property) {
         FileHandler<Property> fileHandler = new FileHandler<Property>();
 
-        fileHandler.writeFile(filePath, "property", property);
+        fileHandler.addObjectToFile(filePath, "com.dh.mercadolivre.desafioquality.model.Property", property);
 
         return property;
     }
@@ -30,7 +30,8 @@ public class PropertyRepository {
     public List<Property> getAllProperty() {
         FileHandler<Property> fileHandler = new FileHandler<Property>();
 
-        List<Property> propertyList = fileHandler.readFile(filePath, "property");
+        List<Property> propertyList = fileHandler.readFile(filePath,
+                "com.dh.mercadolivre.desafioquality.model.Property");;
 
         return propertyList;
     }
@@ -38,7 +39,7 @@ public class PropertyRepository {
     public Property getProperty(long id) {
         FileHandler<Property> fileHandler = new FileHandler<Property>();
 
-        List<Property> propertyList = fileHandler.readFile(filePath, "property");
+        List<Property> propertyList = fileHandler.readFile(filePath, "com.dh.mercadolivre.desafioquality.model.Property");
 
         List<Property> propertyExists = propertyList
                 .stream()
@@ -52,13 +53,14 @@ public class PropertyRepository {
         return propertyExists.get(0);
     }
 
-    public boolean deleteProperty(Property property) {
+    public boolean deleteProperty(int indexOfProperty) {
         FileHandler<Property> fileHandler = new FileHandler<Property>();
 
-        boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath, "property", property);
+        boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath,
+                "com.dh.mercadolivre.desafioquality.model.Property", indexOfProperty);
 
         if (!hasDeletedProperty) {
-            throw new PropertyNotFoundException(String.format("Could not find property for id %d", property.getId()));
+            throw new PropertyNotFoundException("Could not find property for id");
         }
 
         return true;
