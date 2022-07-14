@@ -52,7 +52,7 @@ public class PropertyController {
     }
 
     @GetMapping("/property/{id}/total_property_area")
-	public ResponseEntity<Double> getTotalPropertyArea(Long id) {
+	public ResponseEntity<Double> getTotalPropertyArea(@PathVariable Long id) {
 		Double totalPropertyArea = propertyService.getAreaTotal(id);
 
 		return ResponseEntity.ok(totalPropertyArea);
