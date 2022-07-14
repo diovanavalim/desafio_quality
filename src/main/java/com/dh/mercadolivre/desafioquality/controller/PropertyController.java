@@ -63,7 +63,7 @@ public class PropertyController {
 	// buscar valor total da propriedade
 	@GetMapping("/property/{id}/total_property_price")
 	public ResponseEntity<Double> getTotalPropertyPrice(@PathVariable Long id) {
-		Double totalPropertyPrice = service.calculateTotalPropertyPrice(id);
+		Double totalPropertyPrice = propertyService.calculateTotalPropertyPrice(id);
 
 		return ResponseEntity.ok(totalPropertyPrice);
 	}
