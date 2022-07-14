@@ -27,14 +27,9 @@ public class PropertyService implements IPropertyService {
         return calculatedArea;
     };
 
+    // método que calcula o preço do metro quadrado de acordo com a vizinhança
     private Double calculateTotalPropertyPrice(Long idProperty) {
-        // precisamos construir um método GET property by ID
-        Room room = new Room("Banheiro", 10.00, 10.00);
-        District district = new District("Ipiranga", 1000.00);
-        List<Room> listRoom = new ArrayList<>();
-        listRoom.add(room);
-        Property property = new Property(1L, "Casa da Amanda", district, listRoom);
-
+        Property property = propertyRep.findPropertyById(idProperty);
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
 
@@ -55,7 +50,7 @@ public class PropertyService implements IPropertyService {
 	}
 
 	public Room getLargestRoomFromId(Long id){
-		Property FoundProperty = repository.findPropertyById(id);
+		Property FoundProperty = propertyRep.findPropertyById(id);
 		return findLargestRoomAmonglist(FoundProperty.getRoomList());
 	}
 }
