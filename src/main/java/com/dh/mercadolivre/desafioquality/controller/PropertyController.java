@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/property")
 public class PropertyController {
@@ -20,5 +22,12 @@ public class PropertyController {
 		Room largestRoom = service.getLargestRoomFromId(id);
 
 		return ResponseEntity.ok(largestRoom);
+	}
+
+	@GetMapping("/listRooms/{id}")
+	public ResponseEntity<List<RoomAreaDto>> getListRoom(@PathVariable Long id){
+		List<RoomAreaDto> listRoom = service.getAreaRooms(id);
+
+		return ResponseEntity.ok(listRoom);
 	}
 }
