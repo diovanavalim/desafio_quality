@@ -5,11 +5,13 @@ import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class FileHandler<T> {
 
     T object;
