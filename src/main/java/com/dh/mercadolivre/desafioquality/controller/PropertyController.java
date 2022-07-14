@@ -1,4 +1,6 @@
 package com.dh.mercadolivre.desafioquality.controller;
+import com.dh.mercadolivre.desafioquality.model.Property;
+import com.dh.mercadolivre.desafioquality.model.Room;
 import com.dh.mercadolivre.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +15,13 @@ public class PropertyController {
 
 	@Autowired
 	PropertyService service;
+
+	@GetMapping("/totalpropertyarea/{id}")
+	public ResponseEntity<Double> getTotalPropertyArea(Long id) {
+		Double totalPropertyArea = service.getAreaTotal(id);
+
+		return ResponseEntity.ok(totalPropertyArea);
+	}
 
 	@GetMapping("/largestroom/{id}")
 	public ResponseEntity<Room> getLargestRoom(@PathVariable Long id){
