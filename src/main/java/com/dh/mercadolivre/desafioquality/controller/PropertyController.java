@@ -51,6 +51,7 @@ public class PropertyController {
         return new ResponseEntity<DefaultServerResponseDto>(defaultServerResponseDto, httpStatus);
     }
 
+	// buscar area total da propriedade pelo ID
     @GetMapping("/property/{id}/total_property_area")
 	public ResponseEntity<Double> getTotalPropertyArea(@PathVariable Long id) {
 		Double totalPropertyArea = propertyService.getAreaTotal(id);
@@ -58,13 +59,24 @@ public class PropertyController {
 		return ResponseEntity.ok(totalPropertyArea);
 	}
 
+
+	// buscar valor total da propriedade
+	@GetMapping("/property/{id}/total_property_price")
+	public ResponseEntity<Double> getTotalPropertyPrice(@PathVariable Long id) {
+		Double totalPropertyPrice = service.calculateTotalPropertyPrice(id);
+
+		return ResponseEntity.ok(totalPropertyPrice);
+	}
+
+	// buscar o maior cômodo de uma propriedade pelo ID
 	@GetMapping("/property/{id}/largest_room")
 	public ResponseEntity<RoomAreaDto> getLargestRoom(@PathVariable Long id){
 		RoomAreaDto largestRoom = propertyService.getLargestRoomFromId(id);
 
 		return ResponseEntity.ok(largestRoom);
 	}
-
+  
+  // buscar a lista de cômodos e suas áreas calculadas (retorna nome e área de cada cômodo)
 	@GetMapping("/property/{id}/list_rooms")
 	public ResponseEntity<List<RoomAreaDto>> getListRoom(@PathVariable Long id){
 		List<RoomAreaDto> listRoom = propertyService.getAreaRooms(id);
