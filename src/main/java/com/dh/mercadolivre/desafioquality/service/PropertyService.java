@@ -9,11 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
 import com.dh.mercadolivre.desafioquality.model.District;
-import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
-import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
