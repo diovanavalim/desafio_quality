@@ -1,9 +1,7 @@
 package com.dh.mercadolivre.desafioquality.repository;
 
 import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
-
 import com.dh.mercadolivre.desafioquality.model.Property;
-
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
