@@ -7,7 +7,6 @@ import javax.validation.constraints.*;
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
 @NoArgsConstructor
 public class Room {

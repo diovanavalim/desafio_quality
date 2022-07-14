@@ -9,7 +9,6 @@ import javax.validation.constraints.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@NoArgsConstructor
 public class District {
     @NotBlank(message = "O nome do bairro não pode estar vazio.")
     @Size(max = 45, message = "O comprimento do nome do bairro não pode exceder 45 caracteres.")
