@@ -1,9 +1,6 @@
 package com.dh.mercadolivre.desafioquality.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.NotBlank;
@@ -14,6 +11,7 @@ import javax.validation.constraints.Size;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class District {
     @NotBlank(message = "O nome do bairro não pode estar vazio.")
     @Size(max = 45, message = "O comprimento do nome do bairro não pode exceder 45 caracteres.")

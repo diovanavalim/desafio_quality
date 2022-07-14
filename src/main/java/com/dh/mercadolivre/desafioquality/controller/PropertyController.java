@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/property")
 public class PropertyController {
 
-    @Autowired
-    private PropertyService propertyService;
+	@Autowired
+	PropertyService service;
 
-    @GetMapping("/area/{id}")
-    public ResponseEntity<Double> getTotalPropertyArea(@PathVariable Long id) {
-        Double result = propertyService.getAreaTotal(id);
-        return ResponseEntity.ok(result);
-    }
+	@GetMapping("/largestroom/{id}")
+	public ResponseEntity<Room> getLargestRoom(@PathVariable Long id){
+		Room largestRoom = service.getLargestRoomFromId(id);
+
+		return ResponseEntity.ok(largestRoom);
+	}
 }

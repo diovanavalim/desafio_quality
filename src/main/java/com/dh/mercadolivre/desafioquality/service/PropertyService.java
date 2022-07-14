@@ -1,5 +1,6 @@
 package com.dh.mercadolivre.desafioquality.service;
 
+
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.model.Room;
@@ -42,4 +43,19 @@ public class PropertyService implements IPropertyService {
         Property property = propertyRep.findPropertyById(idProperty);
         return calculatePropertyArea(property).stream().reduce(0.0, Double::sum);
     }
+
+	private Room findLargestRoomAmonglist(List<Room> roomList) {
+		int largestRoomIndex = 0;
+		for (int i = 0; i < roomList.size(); i += 1) {
+			if (roomList.get(i).getRoomLength() * roomList.get(i).getRoomWidth() > roomList.get(largestRoomIndex).getRoomLength() * roomList.get(largestRoomIndex).getRoomWidth()) {
+				largestRoomIndex = i;
+			}
+		}
+		return roomList.get(largestRoomIndex);
+	}
+
+	public Room getLargestRoomFromId(Long id){
+		Property FoundProperty = repository.findPropertyById(id);
+		return findLargestRoomAmonglist(FoundProperty.getRoomList());
+	}
 }

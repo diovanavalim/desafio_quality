@@ -1,9 +1,6 @@
 package com.dh.mercadolivre.desafioquality.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.*;
 
@@ -11,6 +8,7 @@ import javax.validation.constraints.*;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class Room {
     @NotBlank(message = "O campo não pode estar vazio.")
     @Size(max = 30, message = "O comprimento do cômodo não pode exceder 30 caracteres.")

@@ -1,13 +1,32 @@
-{
-  "id" : 1,
-  "propName" : "Casa da Amanda",
-  "propDistrict" : {
-    "name" : "Ipiranga",
-    "valueDistrictM2" : 1000.0
-  },
-  "roomList" : [ {
-    "roomName" : "Banheiro",
-    "roomWidth" : 10.0,
-    "roomLength" : 10.0
-  } ]
-}
+[
+  {
+    "id": 1,
+    "propName": "Rua Laura",
+    "propDistrict": {
+      "name": "Horto",
+      "valueDistrictM2": 900.00
+    },
+    "roomList": [
+      {
+        "roomName": "Bedroom",
+        "roomWidth": 2.00,
+        "roomLength": 1.50
+      },
+      {
+        "roomName": "Bathroom",
+        "roomWidth": 1.00,
+        "roomLength": 0.50
+      },
+      {
+        "roomName": "kitchen",
+        "roomWidth": 1.00,
+        "roomLength": 1.50
+      },
+      {
+        "roomName": "corridor",
+        "roomWidth": 3.00,
+        "roomLength": 0.50
+      }
+    ]
+  }
+]
