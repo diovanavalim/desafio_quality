@@ -14,7 +14,7 @@ public class DistrictRepository {
     public District saveDistrict(District district) {
         FileHandler<District> fileHandler = new FileHandler<District>();
 
-        fileHandler.writeFile(filePath, "district", district);
+        fileHandler.addObjectToFile(filePath, "com.dh.mercadolivre.desafioquality.model.District", district);
 
         return district;
     }
@@ -22,7 +22,7 @@ public class DistrictRepository {
     public List<District> getAllDistrict() {
         FileHandler<District> fileHandler = new FileHandler<District>();
 
-        List<District> districtList = fileHandler.readFile(filePath, "district");
+        List<District> districtList = fileHandler.readFile(filePath, "com.dh.mercadolivre.desafioquality.model.District");
 
         System.out.println(districtList);
 

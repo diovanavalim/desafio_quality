@@ -1,6 +1,7 @@
 package com.dh.mercadolivre.desafioquality.service;
 
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
+import com.dh.mercadolivre.desafioquality.exceptions.ServerException;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
@@ -38,9 +39,13 @@ public class PropertyService implements IPropertyService{
 
         List<Property> propertyList = propertyRepository.getAllProperty();
 
-        int lastIndex = propertyList.size() - 1;
+        int lastIndex = 0;
+        long propertyId = 1;
 
-        long propertyId = propertyList.get(lastIndex).getId() + 1;
+        if (propertyList.size() != 0) {
+            lastIndex = propertyList.size() - 1;
+            propertyId = propertyList.get(lastIndex).getId() + 1;
+        }
 
         property.setId(propertyId);
 
@@ -58,9 +63,21 @@ public class PropertyService implements IPropertyService{
 
     @Override
     public boolean deleteProperty(Long id) {
-        Property property = propertyRepository.getProperty(id);
+        List<Property> propertyList = propertyRepository.getAllProperty();
 
-        boolean hasBeenDeleted = propertyRepository.deleteProperty(property);
+        int indexOfProperty = -1;
+
+        for (int i = 0; i < propertyList.size(); i++) {
+            if (propertyList.get(i).getId() == id) {
+                indexOfProperty = i;
+            }
+        }
+
+        if (indexOfProperty == -1) {
+            return false;
+        }
+
+        boolean hasBeenDeleted = propertyRepository.deleteProperty(indexOfProperty);
 
         return hasBeenDeleted;
     }

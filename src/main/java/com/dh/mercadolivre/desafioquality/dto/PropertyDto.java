@@ -17,10 +17,12 @@ public class PropertyDto {
     private String propName;
     private District propDistrict;
     private List<Room> roomList;
+    private long id;
 
     public PropertyDto(Property property) {
         this.propName = property.getPropName();
         this.propDistrict = property.getPropDistrict();
         this.roomList = property.getRoomList();
+        this.id = property.getId();
     }
 }

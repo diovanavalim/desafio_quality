@@ -1,5 +1,6 @@
 package com.dh.mercadolivre.desafioquality.controller;
 
+import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.service.PropertyService;
@@ -34,7 +35,7 @@ public class PropertyController {
     }
 
     @DeleteMapping("/property/{id}")
-    public ResponseEntity<String> deleteProperty(@PathVariable String id) {
+    public ResponseEntity<DefaultServerResponseDto> deleteProperty(@PathVariable String id) {
         long convertedId = Long.parseLong(id);
 
         boolean hasBeenDeleted = propertyService.deleteProperty(convertedId);
@@ -43,6 +44,8 @@ public class PropertyController {
 
         HttpStatus httpStatus = hasBeenDeleted ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
 
-        return new ResponseEntity<String>(message, httpStatus);
+        DefaultServerResponseDto defaultServerResponseDto = new DefaultServerResponseDto(message, httpStatus.getReasonPhrase());
+
+        return new ResponseEntity<DefaultServerResponseDto>(defaultServerResponseDto, httpStatus);
     }
 }
