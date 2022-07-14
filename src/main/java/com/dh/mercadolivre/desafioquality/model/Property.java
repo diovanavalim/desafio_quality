@@ -3,10 +3,7 @@ package com.dh.mercadolivre.desafioquality.model;
 import lombok.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Getter
@@ -28,4 +25,6 @@ public class Property {
 
     @NotEmpty(message = "A lista de cômodos não pode estar vazia.")
     private List<@Valid Room> roomList;
+
+    private long id;
 }

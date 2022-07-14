@@ -1,6 +1,7 @@
 package com.dh.mercadolivre.desafioquality.repository;
 
-import com.dh.mercadolivre.desafioquality.exceptions.NotFoundPropertyException;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
+
 import com.dh.mercadolivre.desafioquality.model.Property;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -9,53 +10,57 @@ import org.springframework.stereotype.Repository;
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.dh.mercadolivre.desafioquality.util.FileHandler;
 
 @Repository
 public class PropertyRepository {
 
-	private String linkFile = "src/main/resources/property.json";
+	private final String filePath = "src/main/resources/property.json";
 
-	public Property findPropertyById(Long id) {
+    public Property saveProperty(Property property) {
+        FileHandler<Property> fileHandler = new FileHandler<Property>();
 
-//		Room room1 = new Room("Bedroom", 2.00, 1.50);
-//		Room room2 = new Room("Bathroom", 1.00, 0.50);
-//		Room room3 = new Room("Kitchen", 1.00, 1.50);
-//		Room room4 = new Room("Corridor", 3.00, 0.50);
-//		District district = new District("Horto", 900.00);
-//		List<Room> listRoom = new ArrayList<>();
-//		listRoom.add(room1);
-//		listRoom.add(room2);
-//		listRoom.add(room3);
-//		listRoom.add(room4);
-//		Property property = new Property(1L,"Rua Laura", district, listRoom);
-//
-//		ObjectMapper mapper = new ObjectMapper();
-//		ObjectWriter writer = mapper.writer (new DefaultPrettyPrinter());
-//		List<Property> lista = new ArrayList<>();
-//		lista.add(property);
-//
-//		try{
-//			writer.writeValue(new File(linkFile), lista);
-//		}catch (Exception e){
-//
-//		}
-//
-//		return property;
+        fileHandler.writeFile(filePath, "property", property);
 
-		ObjectMapper mapper = new ObjectMapper();
-		List<Property> lista = null;
-		try {
-			lista = Arrays.asList
-					(mapper.readValue(new File(linkFile),Property[].class));
-		} catch (Exception ex) {
-			System.out.println(ex.getMessage());
-		}
-		for (Property p : lista) {
-			if (p.getId().equals(id)) {
-				return p;
-			}
-		}
+        return property;
+    }
 
-		throw new NotFoundPropertyException("Veiculo não localizado");
-	}
+    public List<Property> getAllProperty() {
+        FileHandler<Property> fileHandler = new FileHandler<Property>();
+
+        List<Property> propertyList = fileHandler.readFile(filePath, "property");
+
+        return propertyList;
+    }
+
+    public Property getProperty(long id) {
+        FileHandler<Property> fileHandler = new FileHandler<Property>();
+
+        List<Property> propertyList = fileHandler.readFile(filePath, "property");
+
+        List<Property> propertyExists = propertyList
+                .stream()
+                .filter(property -> property.getId() == id)
+                .collect(Collectors.toList());
+
+        if (propertyExists.size() == 0) {
+            throw new PropertyNotFoundException(String.format("Could not find property for id %d", id));
+        }
+
+        return propertyExists.get(0);
+    }
+
+    public boolean deleteProperty(Property property) {
+        FileHandler<Property> fileHandler = new FileHandler<Property>();
+
+        boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath, "property", property);
+
+        if (!hasDeletedProperty) {
+            throw new PropertyNotFoundException(String.format("Could not find property for id %d", property.getId()));
+        }
+
+        return true;
+    }
 }
