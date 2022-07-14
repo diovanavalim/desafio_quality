@@ -4,11 +4,8 @@ import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 
 import com.dh.mercadolivre.desafioquality.model.Property;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Repository;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
