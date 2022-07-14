@@ -1,18 +1,12 @@
 package com.dh.mercadolivre.desafioquality.repository;
 
-import com.dh.mercadolivre.desafioquality.model.District;
+import com.dh.mercadolivre.desafioquality.exceptions.NotFoundPropertyException;
 import com.dh.mercadolivre.desafioquality.model.Property;
-import com.dh.mercadolivre.desafioquality.model.Room;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-
-import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.stereotype.Repository;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -62,7 +56,6 @@ public class PropertyRepository {
 			}
 		}
 
-//		throw new NotFoundException("Veiculo não localizado");
-		return null;
+		throw new NotFoundPropertyException("Veiculo não localizado");
 	}
 }
