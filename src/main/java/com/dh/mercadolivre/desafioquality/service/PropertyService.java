@@ -1,6 +1,7 @@
 package com.dh.mercadolivre.desafioquality.service;
 
 
+import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.model.Room;
@@ -19,12 +20,14 @@ public class PropertyService implements IPropertyService {
     private PropertyRepository propertyRep;
 
     // método que calcula a área total por cômodo de uma propriedade
-    private List<Double> calculatePropertyArea(Property property) {
-
-        List<Double> calculatedArea = property.getRoomList().stream()
-                .map(room -> room.getRoomWidth() * room.getRoomLength())
+    private static List<RoomAreaDto> calculatePropertyArea(Property property) {
+        List<RoomAreaDto> roomAreaList = property.getRoomList().stream()
+                .map(room -> RoomAreaDto.builder()
+                        .roomName(room.getRoomName())
+                        .area(room.getRoomLength() * room.getRoomWidth())
+                        .build())
                 .collect(Collectors.toList());
-        return calculatedArea;
+        return roomAreaList;
     };
 
     // método que calcula o preço do metro quadrado de acordo com a vizinhança
@@ -36,21 +39,29 @@ public class PropertyService implements IPropertyService {
     @Override
     public Double getAreaTotal(Long idProperty) {
         Property property = propertyRep.findPropertyById(idProperty);
-        return calculatePropertyArea(property).stream().reduce(0.0, Double::sum);
+        List<RoomAreaDto> roomAreaList = calculatePropertyArea(property);
+        Double totalArea = 0.0;
+        for(RoomAreaDto r : roomAreaList){
+            totalArea += r.getArea();
+        }
+        return totalArea;
     }
 
-	private Room findLargestRoomAmonglist(List<Room> roomList) {
-		int largestRoomIndex = 0;
-		for (int i = 0; i < roomList.size(); i += 1) {
-			if (roomList.get(i).getRoomLength() * roomList.get(i).getRoomWidth() > roomList.get(largestRoomIndex).getRoomLength() * roomList.get(largestRoomIndex).getRoomWidth()) {
-				largestRoomIndex = i;
-			}
-		}
-		return roomList.get(largestRoomIndex);
+	public RoomAreaDto getLargestRoomFromId(Long id){
+		Property foundProperty = propertyRep.findPropertyById(id);
+		List<RoomAreaDto> roomAreaList = calculatePropertyArea(foundProperty);
+		RoomAreaDto largestRoom = roomAreaList.get(0);
+        for(RoomAreaDto r : roomAreaList){
+            if(r.getArea() > largestRoom.getArea()){
+                largestRoom = r;
+            }
+        }
+		return largestRoom;
 	}
 
-	public Room getLargestRoomFromId(Long id){
-		Property FoundProperty = propertyRep.findPropertyById(id);
-		return findLargestRoomAmonglist(FoundProperty.getRoomList());
-	}
+	public List<RoomAreaDto> getAreaRooms(Long idProperty) {
+        Property property = propertyRep.findPropertyById(idProperty);
+        List<RoomAreaDto> result = calculatePropertyArea(property);
+        return result;
+    }
 }
