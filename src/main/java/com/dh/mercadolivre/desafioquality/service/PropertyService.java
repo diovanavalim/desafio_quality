@@ -2,14 +2,10 @@ package com.dh.mercadolivre.desafioquality.service;
 
 
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
-import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
-import com.dh.mercadolivre.desafioquality.model.Room;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,10 +24,10 @@ public class PropertyService implements IPropertyService {
                         .build())
                 .collect(Collectors.toList());
         return roomAreaList;
-    };
+    }
 
-    // método que calcula o preço do metro quadrado de acordo com a vizinhança
-    private Double calculateTotalPropertyPrice(Long idProperty) {
+    // método que calcula o preço da propriedade, à partir valor do metro quadrado de acordo com a vizinhança * a área total da propriedade
+    public Double calculateTotalPropertyPrice(Long idProperty) {
         Property property = propertyRep.findPropertyById(idProperty);
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
