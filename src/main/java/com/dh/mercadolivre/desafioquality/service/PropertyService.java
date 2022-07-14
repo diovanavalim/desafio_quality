@@ -39,7 +39,7 @@ public class PropertyService implements IPropertyService {
     }
 
     // método que calcula o preço do metro quadrado de acordo com a vizinhança
-    private Double calculateTotalPropertyPrice(Long idProperty) {
+    public Double calculateTotalPropertyPrice(Long idProperty) {
         Property property = propertyRepository.getProperty(idProperty);
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
