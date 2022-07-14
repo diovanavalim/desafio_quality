@@ -4,4 +4,5 @@ import com.dh.mercadolivre.desafioquality.model.Property;
 
 public interface IPropertyService {
     Double getAreaTotal(Long id);
+    List<RoomAreaDto> getAreaRooms(Long id);
 }
