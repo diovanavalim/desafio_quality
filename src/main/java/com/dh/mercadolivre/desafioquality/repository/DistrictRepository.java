@@ -24,8 +24,6 @@ public class DistrictRepository {
 
         List<District> districtList = fileHandler.readFile(filePath, "com.dh.mercadolivre.desafioquality.model.District");
 
-        System.out.println(districtList);
-
         return districtList;
     }
 }
