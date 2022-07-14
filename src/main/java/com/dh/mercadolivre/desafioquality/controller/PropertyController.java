@@ -1,4 +1,6 @@
 package com.dh.mercadolivre.desafioquality.controller;
+import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
+
 import com.dh.mercadolivre.desafioquality.model.Room;
 import com.dh.mercadolivre.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +20,8 @@ public class PropertyController {
 	PropertyService service;
 
 	@GetMapping("/largestroom/{id}")
-	public ResponseEntity<Room> getLargestRoom(@PathVariable Long id){
-		Room largestRoom = service.getLargestRoomFromId(id);
+	public ResponseEntity<RoomAreaDto> getLargestRoom(@PathVariable Long id){
+		RoomAreaDto largestRoom = service.getLargestRoomFromId(id);
 
 		return ResponseEntity.ok(largestRoom);
 	}

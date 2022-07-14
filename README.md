@@ -1,8 +1,8 @@
-<h1 align="center">🚀 Desafio Quality - Wave 6 🚀</h1>
+<h1 align="center">✅ Desafio Quality - Wave 6 ✅</h1>
 <p align="center">Repositório criado para hospedar o código do segundo Touchpoint do Bootcamp IT Java.</p>
 
 <p align="center">
-  <img align="" alt="mascoteJava" src="https://github.com/gabiazevedo/java-codes/blob/main/java_gif.gif" height="200px" width="100%" />
+  <img align="" alt="mascoteJava" src="https://github.com/amarinellif/boot-dh-testes/blob/main/developer-tester.gif" height="70%" width="70%" />
 </p>
 
 <p align="center">
@@ -18,32 +18,27 @@
 
 ## 🖊 Sobre o Projeto
 <p> 
-O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas. O programa possui as funcionalidades de cadastro e recuperação de produto, cliente e pedido, incluindo a gestão de estoque. 
+O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa viabiliza a partir de um banco de imóveis cadastrados com nome, bairro (nome e valor do metro quadrado) e uma lista de cômodos (nome, comprimento e largura), retornar o nome, bairro, área total, o preço total, a lista de cômodos com suas respectivas áreas e o maior cômodo da propriedade.
 </p>
 
 ___
 
 ## 📄 Requisitos
 - Obrigatórios (RO)
-  - Calcular a área total de uma propriedade (RO-0001);
-  - Indicar o preço dessa mesma propriedade com base na área total (RO-0002);
-  - Determinar qual é o maior cômodo da propriedade (RO-0003);
-  - Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade. (RO-0004);
-  - Fazer as devidas validações (US-0006);
+  RO-01 Calcular a área total de uma propriedade (US-0001);
+  RO-02 Indicar o preço dessa mesma propriedade com base na área total (US-0002);
+  RO-03 Determinar qual é o maior cômodo da propriedade (US-0003);
+  RO-04 Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade (US-0004);
+  RO-05 Fazer os testes unitários (US-0005);
+  RO-06 Fazer as devidas validações, conforme especificado (US-0006);
+ 
   
 - Bônus (RB)
-  - Implantação de controle de estoque com tratamento de exceção quando o pedido de compra for maior que o existente (RB-09);
-  - Implantação de um cadastro de clientes (RB-11);
-  - Busca de lista de todos clientes (RB-12);
-  - Busca de lista de clientes filtrados por categoria (RO-13);
+ RB-01 Fazer os testes de integração, conforme especificado (US-0007);
+
 
 - Melhorias implementadas (SM)
-  - Aplicação de regex para validação de CPF e Nome (SM-01);
-  - Validação dos campos de cadastro de clientes (SM-02);
-  - Verificação de cadastro de clientes já existente por CPF com tratamento de exceção (SM-03);
-  - Implantação de filtros dinâmicos por combinação de quaisquer filtros (SM-04);
-  - Implantação de um insertProduto que faz a verificação de produtos, caso já exista, atualiza a quantidade (SM-05);
-  - Cadastro de um único produto (SM-06);
+  - 
 
 ___
 
@@ -98,7 +93,7 @@ ___
 
 ## 🌙 Coleção de Requisições 
 
-A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-spring.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia.
+/////A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-spring.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia./////
 
 ---
 
