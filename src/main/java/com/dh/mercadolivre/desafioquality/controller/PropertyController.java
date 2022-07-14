@@ -1,6 +1,4 @@
 package com.dh.mercadolivre.desafioquality.controller;
-
-import com.dh.mercadolivre.desafioquality.model.Room;
 import com.dh.mercadolivre.desafioquality.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

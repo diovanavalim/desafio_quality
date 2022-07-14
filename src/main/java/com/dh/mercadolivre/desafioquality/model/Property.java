@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 public class Property {
-    
+
     private Long id;
     
     @NotBlank(message = "O nome da propriedade não pode estar vazio.")
