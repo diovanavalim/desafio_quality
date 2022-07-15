@@ -7,6 +7,9 @@ import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
 
 import java.util.List;
 
+/**
+ * Interface to deal with the methods implemented on the PropertyService class.
+ */
 public interface IPropertyService {
     Double getAreaTotal(Long id);
     
