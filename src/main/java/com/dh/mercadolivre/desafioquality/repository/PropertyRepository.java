@@ -49,10 +49,6 @@ public class PropertyRepository {
         boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath,
                 "com.dh.mercadolivre.desafioquality.model.Property", indexOfProperty);
 
-        if (!hasDeletedProperty) {
-            throw new PropertyNotFoundException("Could not find property for id");
-        }
-
-        return true;
+        return hasDeletedProperty;
     }
 }
