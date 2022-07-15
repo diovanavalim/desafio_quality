@@ -2,4 +2,8 @@
   "name" : "Trindade",
   "city" : "Florianopolis",
   "valueDistrictM2" : 400.0
+}, {
+  "name" : "Horto",
+  "city" : "Nova Iguacu",
+  "valueDistrictM2" : 900.0
 } ]
