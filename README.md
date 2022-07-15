@@ -24,7 +24,7 @@ O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Es
 ___
 
 ## 📄 Requisitos
-- Obrigatórios (RO)
+<p> Obrigatórios (RO)</p>
 - RO-01 Calcular a área total de uma propriedade (US-0001);
 - RO-02 Indicar o preço dessa mesma propriedade com base na área total (US-0002);
 - RO-03 Determinar qual é o maior cômodo da propriedade (US-0003);
