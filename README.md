@@ -23,10 +23,10 @@ O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Es
 </p>
 
 ___
-<a name="Requisitos">
 ## 📄 Requisitos
-</a>
+<a name="Requisitos">
 <p> Obrigatórios (RO)</p>
+</a>
 
 <p>
  
@@ -47,23 +47,23 @@ ___
 </p>
 
 ___
-<a name="Tecnologias">
 ## 🛠 Tecnologias
-</a>
-
+<a name="Tecnologias">
 A API foi construída utilizando a linguagem Java, com o framework Spring Boot.
+</a>
 
 ___
 
 ## ✅ Pré-requisitos
-
+<a name="Pré-requisitos">
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Java](https://www.java.com/pt-BR/) e um editor de código a sua escolha. Sugere-se o uso do Intelij Idea, disponível [aqui](https://www.jetbrains.com/pt-br/idea/).
-
+</a>
 ___
 
 ## 🎲 Rodando o Servidor
-
+<a name="Rodando o Servidor">
+</a>
 - Clone este repositório na sua máquina:
     
       git clone https://github.com/diovanavalim/desafio_spring.git
