@@ -1,11 +1,14 @@
 package com.dh.mercadolivre.desafioquality.service;
 
+import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 
 import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
@@ -126,7 +129,7 @@ public class PropertyService implements IPropertyService {
     }
 
     @Override
-    public boolean deleteProperty(Long id) {
+    public DefaultServerResponseDto deleteProperty(Long id) {
         List<Property> propertyList = propertyRepository.getAllProperty();
 
         int indexOfProperty = -1;
@@ -138,11 +141,15 @@ public class PropertyService implements IPropertyService {
         }
 
         if (indexOfProperty == -1) {
-            return false;
+            throw new PropertyNotFoundException(String.format("Could not find property for id %d", id));
         }
 
         boolean hasBeenDeleted = propertyRepository.deleteProperty(indexOfProperty);
 
-        return hasBeenDeleted;
+
+        String message = hasBeenDeleted ? "Property successfully deleted" : "Could not delete property";
+        HttpStatus httpStatus = hasBeenDeleted ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
+
+        return new DefaultServerResponseDto(message, httpStatus.getReasonPhrase());
     }
 }
