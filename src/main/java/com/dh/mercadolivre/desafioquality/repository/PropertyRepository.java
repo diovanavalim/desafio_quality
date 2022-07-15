@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import com.dh.mercadolivre.desafioquality.util.FileHandler;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class PropertyRepository {
 
     @Autowired
@@ -46,9 +47,7 @@ public class PropertyRepository {
     }
 
     public boolean deleteProperty(int indexOfProperty) {
-        boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath,
+        return fileHandler.removeObjectFromFile(filePath,
                 "com.dh.mercadolivre.desafioquality.model.Property", indexOfProperty);
-
-        return hasDeletedProperty;
     }
 }
