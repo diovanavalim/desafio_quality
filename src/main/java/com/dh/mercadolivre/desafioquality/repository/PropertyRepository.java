@@ -1,6 +1,7 @@
 package com.dh.mercadolivre.desafioquality.repository;
 
 import com.dh.mercadolivre.desafioquality.model.Property;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 import java.util.List;
@@ -9,21 +10,21 @@ import java.util.stream.Collectors;
 import com.dh.mercadolivre.desafioquality.util.FileHandler;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class PropertyRepository {
+
+    @Autowired
+    private FileHandler fileHandler;
 
 	private final String filePath = "src/main/resources/property.json";
 
     public Property saveProperty(Property property) {
-        FileHandler<Property> fileHandler = new FileHandler<Property>();
-
         fileHandler.addObjectToFile(filePath, "com.dh.mercadolivre.desafioquality.model.Property", property);
 
         return property;
     }
 
     public List<Property> getAllProperty() {
-        FileHandler<Property> fileHandler = new FileHandler<Property>();
-
         List<Property> propertyList = fileHandler.readFile(filePath,
                 "com.dh.mercadolivre.desafioquality.model.Property");;
 
@@ -31,8 +32,6 @@ public class PropertyRepository {
     }
 
     public Property getProperty(long id) {
-        FileHandler<Property> fileHandler = new FileHandler<Property>();
-
         List<Property> propertyList = fileHandler.readFile(filePath, "com.dh.mercadolivre.desafioquality.model.Property");
 
         List<Property> propertyExists = propertyList
@@ -48,15 +47,7 @@ public class PropertyRepository {
     }
 
     public boolean deleteProperty(int indexOfProperty) {
-        FileHandler<Property> fileHandler = new FileHandler<Property>();
-
-        boolean hasDeletedProperty = fileHandler.removeObjectFromFile(filePath,
+        return fileHandler.removeObjectFromFile(filePath,
                 "com.dh.mercadolivre.desafioquality.model.Property", indexOfProperty);
-
-        if (!hasDeletedProperty) {
-            throw new PropertyNotFoundException("Could not find property for id");
-        }
-
-        return true;
     }
 }
