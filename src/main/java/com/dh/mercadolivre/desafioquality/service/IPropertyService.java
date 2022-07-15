@@ -1,5 +1,6 @@
 package com.dh.mercadolivre.desafioquality.service;
 
+import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
@@ -15,5 +16,5 @@ public interface IPropertyService {
 
     PropertyDto getProperty(Long id);
 
-    boolean deleteProperty(Long id);
+    DefaultServerResponseDto deleteProperty(Long id);
 }

@@ -24,7 +24,7 @@ public class PropertyController {
     public ResponseEntity<PropertyDto> saveProperty(@RequestBody @Valid Property property) {
         PropertyDto propertyDto = propertyService.saveProperty(property);
 
-        return new ResponseEntity<PropertyDto>(propertyDto, HttpStatus.OK);
+        return new ResponseEntity<PropertyDto>(propertyDto, HttpStatus.CREATED);
     }
 
     @GetMapping("/property/{id}")
@@ -40,15 +40,9 @@ public class PropertyController {
     public ResponseEntity<DefaultServerResponseDto> deleteProperty(@PathVariable String id) {
         long convertedId = Long.parseLong(id);
 
-        boolean hasBeenDeleted = propertyService.deleteProperty(convertedId);
+        DefaultServerResponseDto defaultServerResponseDto = propertyService.deleteProperty(convertedId);
 
-        String message = hasBeenDeleted ? "Property successfully deleted" : "Could not delete property";
-
-        HttpStatus httpStatus = hasBeenDeleted ? HttpStatus.OK : HttpStatus.BAD_REQUEST;
-
-        DefaultServerResponseDto defaultServerResponseDto = new DefaultServerResponseDto(message, httpStatus.getReasonPhrase());
-
-        return new ResponseEntity<DefaultServerResponseDto>(defaultServerResponseDto, httpStatus);
+        return new ResponseEntity<DefaultServerResponseDto>(defaultServerResponseDto, HttpStatus.valueOf(200));
     }
 
 	// buscar area total da propriedade pelo ID
@@ -58,7 +52,6 @@ public class PropertyController {
 
 		return ResponseEntity.ok(totalPropertyArea);
 	}
-
 
 	// buscar valor total da propriedade
 	@GetMapping("/property/{id}/total_property_price")
