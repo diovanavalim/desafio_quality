@@ -21,6 +21,13 @@ import lombok.NoArgsConstructor;
  * Method builder implemented by Lombok lib
  */
 @Builder
+
+/**
+ *class for a data tranfers Object for a room with the calculated area
+ * @author Rafael Cavalcante
+ * @version 0.0.1
+ * @see java.lang.Object
+ */
 public class RoomAreaDto {
     private String roomName;
     private Double area;
