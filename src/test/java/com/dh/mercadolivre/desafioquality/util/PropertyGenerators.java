@@ -9,7 +9,7 @@ import java.util.List;
 
 public class PropertyGenerators {
 
-    public static List<Property> getPropertyList() {
+    public static List<Room> getRoomList() {
         Room room1 = new Room("Bedroom", 2.00, 1.50);
         Room room2 = new Room("Bathroom", 1.00, 0.50);
         Room room3 = new Room("Kitchen", 1.00, 1.50);
@@ -21,11 +21,22 @@ public class PropertyGenerators {
         roomList.add(room3);
         roomList.add(room4);
 
+        return roomList;
+    }
+
+    public static District getDistrict() {
         District district = District.builder()
                 .name("Trindade")
                 .city("Florianopolis")
                 .valueDistrictM2(900.00)
                 .build();
+
+        return district;
+    }
+
+    public static List<Property> getPropertyList() {
+        List<Room> roomList = getRoomList();
+        District district = getDistrict();
 
         Property property01 = Property.builder()
                 .propName("Apartamento Itambe")
@@ -54,5 +65,19 @@ public class PropertyGenerators {
         propertyList.add(property03);
 
         return propertyList;
+    }
+
+    public static Property getProperty() {
+        List<Room> roomList = getRoomList();
+        District district = getDistrict();
+
+        Property property = Property.builder()
+                .propName("Apartamento Granville")
+                .propDistrict(district)
+                .roomList(roomList)
+                .id(4)
+                .build();
+
+        return property;
     }
 }
