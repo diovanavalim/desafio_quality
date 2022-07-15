@@ -44,10 +44,12 @@ ___
 </p>
 <p> Cobertura de testes Unitários (TU) implementados (%)</p>
 <p>
+  
 - TU-01 DistrictRepositoryTest (100%);
 - TU-02 PropertyRepositoryTest (100%);
 - TU-03 PropertyServiceTest (100%);
 - TU-04 PropertyControllerTest (100%);
+  
 </p>
 
 ___
