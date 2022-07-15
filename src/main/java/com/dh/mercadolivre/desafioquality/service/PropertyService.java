@@ -2,6 +2,7 @@ package com.dh.mercadolivre.desafioquality.service;
 
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 
+import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,14 @@ public class PropertyService implements IPropertyService {
 
     // método que calcula o preço do metro quadrado de acordo com a vizinhança
     public Double calculateTotalPropertyPrice(Long idProperty) {
+        List<District> listDistrict = districtRepository.getAllDistrict();
         Property property = propertyRepository.getProperty(idProperty);
+        List<District> result = listDistrict.stream().filter((district)-> district.getName().equals(property.getPropDistrict().getName())).collect(Collectors.toList());
+
+        if(result.size() == 0) {
+            throw new DistrictNotFoundException("District Not Found");
+        }
+
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
 
