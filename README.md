@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
- <a href="#objetivo">Sobre o Projeto</a> •
+ <a href="#Objetivo">Sobre o Projeto</a> •
  <a href="#Requisitos">Requisitos</a> • 
  <a href="#Tecnologias">Tecnologias</a> • 
  <a href="#Pré-requisitos">Pré-requisitos</a> • 
@@ -15,17 +15,19 @@
  <a href="#Coleção-de-Requisições">Coleção de Requisições</a> •
  <a href="#Autores">Autores</a> •
 </p>
-
+<a name="Objetivo">
 ## 🖊 Sobre o Projeto
+</a>
 <p> 
 O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa viabiliza a partir de um banco de imóveis cadastrados com nome, bairro (nome e valor do metro quadrado) e uma lista de cômodos (nome, comprimento e largura), retornar o nome, bairro, área total, o preço total, a lista de cômodos com suas respectivas áreas e o maior cômodo da propriedade.
 </p>
 
 ___
-## <a name="Requisitos">
-📄 Requisitos
-<p> Obrigatórios (RO)</p>
+<a name="Requisitos">
+## 📄 Requisitos
 </a>
+<p> Obrigatórios (RO)</p>
+
 <p>
  
 - RO-01 Calcular a área total de uma propriedade (US-0001);
@@ -45,8 +47,9 @@ ___
 </p>
 
 ___
-
+<a name="Tecnologias">
 ## 🛠 Tecnologias
+</a>
 
 A API foi construída utilizando a linguagem Java, com o framework Spring Boot.
 
