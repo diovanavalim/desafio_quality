@@ -22,11 +22,12 @@ O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Es
 </p>
 
 ___
-
+<a link="#objetivo">
 ## 📄 Requisitos
 <p> Obrigatórios (RO)</p>
+</a>
 <p>
-  
+ 
 - RO-01 Calcular a área total de uma propriedade (US-0001);
 - RO-02 Indicar o preço dessa mesma propriedade com base na área total (US-0002);
 - RO-03 Determinar qual é o maior cômodo da propriedade (US-0003);
@@ -35,8 +36,13 @@ ___
 - RO-06 Fazer as devidas validações, conforme especificado (US-0006);
 
 </p>
-- Melhorias implementadas (SM)
-  - 
+<p> Cobertura de testes Unitários (TU) implementados (%)</p>
+<p>
+- TU-01 DistrictRepositoryTest (100%);
+- TU-02 PropertyRepositoryTest (100%);
+- TU-03 PropertyServiceTest (100%);
+- TU-04 PropertyControllerTest (100%);
+</p>
 
 ___
 
