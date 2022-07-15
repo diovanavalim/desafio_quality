@@ -4,10 +4,29 @@ import lombok.*;
 
 import javax.validation.constraints.*;
 
+/**
+ * Method implemented by Lombok lib to get access on Room class private attributes
+ */
 @Getter
+
+/**
+ * Method implemented by Lombok lib to set Room class private attributes
+ */
 @Setter
+
+/**
+ * Method implemented by Lombok lib to automatically produce the required code to instantiate Room class
+ */
 @Builder
+
+/**
+ * Method Default Constructor implemented by Lombok lib
+ */
 @AllArgsConstructor
+
+/**
+ * Method Constructor of the Constructor Class
+ */
 @NoArgsConstructor
 public class Room {
     @NotBlank(message = "O campo não pode estar vazio.")
