@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+@SuppressWarnings("unchecked")
 public class DistrictRepository {
 
     private final String filePath = "src/main/resources/district.json";
@@ -15,12 +16,10 @@ public class DistrictRepository {
     @Autowired
     private FileHandler fileHandler;
 
-    @SuppressWarnings("unchecked")
     public void saveDistrict(District district) {
         fileHandler.addObjectToFile(filePath, "com.dh.mercadolivre.desafioquality.model.District", district);
     }
 
-    @SuppressWarnings("unchecked")
     public List<District> getAllDistrict() {
         List<District> districtList = fileHandler
                 .readFile(filePath, "com.dh.mercadolivre.desafioquality.model.District");
