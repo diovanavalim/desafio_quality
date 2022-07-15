@@ -25,17 +25,12 @@ ___
 
 ## 📄 Requisitos
 - Obrigatórios (RO)
-  RO-01 Calcular a área total de uma propriedade (US-0001);
-  RO-02 Indicar o preço dessa mesma propriedade com base na área total (US-0002);
-  RO-03 Determinar qual é o maior cômodo da propriedade (US-0003);
-  RO-04 Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade (US-0004);
-  RO-05 Fazer os testes unitários (US-0005);
-  RO-06 Fazer as devidas validações, conforme especificado (US-0006);
- 
-  
-- Bônus (RB)
- RB-01 Fazer os testes de integração, conforme especificado (US-0007);
-
+- RO-01 Calcular a área total de uma propriedade (US-0001);
+- RO-02 Indicar o preço dessa mesma propriedade com base na área total (US-0002);
+- RO-03 Determinar qual é o maior cômodo da propriedade (US-0003);
+- RO-04 Determinar a quantidade de metros quadrados que tem cada cômodo de uma propriedade (US-0004);
+- RO-05 Fazer os testes unitários (US-0005);
+- RO-06 Fazer as devidas validações, conforme especificado (US-0006);
 
 - Melhorias implementadas (SM)
   - 
