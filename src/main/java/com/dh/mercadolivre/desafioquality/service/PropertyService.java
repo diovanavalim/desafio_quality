@@ -18,16 +18,30 @@ import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Class that implements the methods of the IPropertyService interface.
+ * @author Diovana Valim, Gabriela Azevedo, Rafael Cavalcante, Thiago Frozzi, Thiago Guimarães, Amanda Marinelli
+ * @version 0.0.1
+ */
 @Service
 public class PropertyService implements IPropertyService {
 
+    /**
+     * Dependency Injection of the Property Repository.
+     */
     @Autowired
     private PropertyRepository propertyRepository;
-
+    /**
+     * Dependency Injection of the District Repository.
+     */
     @Autowired
     private DistrictRepository districtRepository;
 
-    // método que calcula a área total por cômodo de uma propriedade
+    /**
+     * Static Method that receives an object of type Property, and iterate an List to calculate total area property  .
+     * @param property object of type Property.
+     * @return an list of type RoomAreaDto.
+     */
     private static List<RoomAreaDto> calculatePropertyArea(Property property) {
         List<RoomAreaDto> roomAreaList = property.getRoomList().stream()
                 .map(room -> RoomAreaDto.builder()
@@ -38,7 +52,11 @@ public class PropertyService implements IPropertyService {
         return roomAreaList;
     }
 
-    // método que calcula o preço do metro quadrado de acordo com a vizinhança
+    /**
+     * Method that receives an id of type Long, and calculate total property price.
+     * @param idProperty of type Long.
+     * @return an total Property price type Double.
+     */
     public Double calculateTotalPropertyPrice(Long idProperty) {
         List<District> listDistrict = districtRepository.getAllDistrict();
         Property property = propertyRepository.getProperty(idProperty);
@@ -51,6 +69,11 @@ public class PropertyService implements IPropertyService {
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
 
+    /**
+     * Method that receives an id of type Long, and calculate total area of property.
+     * @param idProperty of type Long.
+     * @return an total Property area type Double.
+     */
     @Override
     public Double getAreaTotal(Long idProperty) {
         Property property = propertyRepository.getProperty(idProperty);
@@ -62,6 +85,11 @@ public class PropertyService implements IPropertyService {
         return totalArea;
     }
 
+    /**
+     * Method that receives an id of type Long, and return the largest Room.
+     * @param id of type Long.
+     * @return an object type RoomAreaDto.
+     */
 	public RoomAreaDto getLargestRoomFromId(Long id){
 		Property foundProperty = propertyRepository.getProperty(id);
 		List<RoomAreaDto> roomAreaList = calculatePropertyArea(foundProperty);
@@ -74,12 +102,23 @@ public class PropertyService implements IPropertyService {
 		return largestRoom;
 	}
 
+    /**
+     * Method that receives an id of type Long, and return list with calculated area of rooms.
+     * @param idProperty of type Long.
+     * @return an List type RoomAreaDto.
+     */
 	public List<RoomAreaDto> getAreaRooms(Long idProperty) {
         Property property = propertyRepository.getProperty(idProperty);
         List<RoomAreaDto> result = calculatePropertyArea(property);
         return result;
     }
 
+    /**
+     * Static Method if not exist save District.
+     * @param property of type Property.
+     * @param districtRepository wired object generate by SpringBoot.
+     * @return void.
+     */
     private static void saveNonExistentDistrict(Property property, DistrictRepository districtRepository){
         District district = property.getPropDistrict();
 
@@ -96,6 +135,11 @@ public class PropertyService implements IPropertyService {
         }
     }
 
+    /**
+     * Static Method generate new id based atual list of property.
+     * @param propertyRepository wired object generate by SpringBoot
+     * @return id of type Long.
+     */
     private static long generateNewLastId (PropertyRepository propertyRepository) {
         List<Property> propertyList = propertyRepository.getAllProperty();
 
@@ -108,7 +152,12 @@ public class PropertyService implements IPropertyService {
         }
         return propertyId;
     }
-    
+
+    /**
+     * Method to save a single Property in the file.
+     * @param property an object of type Property.
+     * @return object of PropertyDto.
+     */
     @Override
     public PropertyDto saveProperty(Property property) {
         saveNonExistentDistrict(property, districtRepository);
@@ -121,6 +170,11 @@ public class PropertyService implements IPropertyService {
         return new PropertyDto(insertedProperty);
     }
 
+    /**
+     * Method to find a property by id and return a PropertyDto.
+     * @param id of type Long.
+     * @return an object of type PropertyDto.
+     */
     @Override
     public PropertyDto getProperty(Long id) {
         Property property = propertyRepository.getProperty(id);
@@ -128,6 +182,11 @@ public class PropertyService implements IPropertyService {
         return new PropertyDto(property);
     }
 
+    /**
+     * Method to delete property by id.
+     * @param id of type Long
+     * @return object of type DefaultServerResponseDto.
+     */
     @Override
     public DefaultServerResponseDto deleteProperty(Long id) {
         List<Property> propertyList = propertyRepository.getAllProperty();
