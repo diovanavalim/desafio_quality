@@ -122,6 +122,9 @@ Criamos também uma documentação da aplicação, utilizando a ferramenta Java 
 2 - Agora basta localizar o arquivo `index-all.html` -> clicar com o botão direito em "Open" -> escolher o browser de sua preferência. Ao clicar, será aberta uma página contendo a documentação.
 
 ___
+
+<a name="Autores"></a>
+
 ## 📝 Autores ##
 
 Desenvolvido com 💛 por Amanda, Diovana, Gabriela, Rafael, Thiago Frozzi e Thiago Almeida. 
