@@ -18,6 +18,7 @@
 <a name="Objetivo">
 ## 🖊 Sobre o Projeto
 </a>
+
 <p> 
 O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa viabiliza a partir de um banco de imóveis cadastrados com nome, bairro (nome e valor do metro quadrado) e uma lista de cômodos (nome, comprimento e largura), retornar o nome, bairro, área total, o preço total, a lista de cômodos com suas respectivas áreas e o maior cômodo da propriedade.
 </p>
@@ -64,6 +65,7 @@ ___
 ## 🎲 Rodando o Servidor
 <a name="Rodando o Servidor">
 </a>
+
 - Clone este repositório na sua máquina:
     
       git clone https://github.com/diovanavalim/desafio_spring.git
@@ -85,6 +87,8 @@ O servidor estará sendo escutado na porta indicada na IDE. Geralmente, trata-se
 ___
 
 ## 🏁 Dependências  
+<a name="Dependências">
+</a>
 
 Foram utilizadas no projeto as seguintes dependências:
 
@@ -99,6 +103,9 @@ Foram utilizadas no projeto as seguintes dependências:
 ___
 
 ## 🌙 Coleção de Requisições 
+
+<a name="Coleção-de-Requisições">
+</a>
 
 /////A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-spring.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia./////
 
