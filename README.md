@@ -15,19 +15,22 @@
  <a href="#Coleção-de-Requisições">Coleção de Requisições</a> •
  <a href="#Autores">Autores</a> •
 </p>
-<a name="Objetivo">
+
+<a name="Objetivo"></a>
 ## 🖊 Sobre o Projeto
-</a>
+
 
 <p> 
 O objetivo do projeto é desenvolver uma API Rest, escrita na linguagem Java. Esta API está voltada ao contexto de vendas de imóveis. O programa viabiliza a partir de um banco de imóveis cadastrados com nome, bairro (nome e valor do metro quadrado) e uma lista de cômodos (nome, comprimento e largura), retornar o nome, bairro, área total, o preço total, a lista de cômodos com suas respectivas áreas e o maior cômodo da propriedade.
 </p>
 
 ___
+
+<a name="Requisitos"></a>
+
 ## 📄 Requisitos
-<a name="Requisitos">
+
 <p> Obrigatórios (RO)</p>
-</a>
 
 <p>
  
@@ -48,23 +51,24 @@ ___
 </p>
 
 ___
+<a name="Tecnologias"></a>
+
 ## 🛠 Tecnologias
-<a name="Tecnologias">
 A API foi construída utilizando a linguagem Java, com o framework Spring Boot.
-</a>
 
 ___
+<a name="Pré-requisitos"></a>
 
 ## ✅ Pré-requisitos
-<a name="Pré-requisitos">
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Java](https://www.java.com/pt-BR/) e um editor de código a sua escolha. Sugere-se o uso do Intelij Idea, disponível [aqui](https://www.jetbrains.com/pt-br/idea/).
-</a>
+
 ___
 
+<a name="Rodando o Servidor"></a>
+
 ## 🎲 Rodando o Servidor
-<a name="Rodando o Servidor">
-</a>
+
 
 - Clone este repositório na sua máquina:
     
@@ -85,10 +89,8 @@ ___
 O servidor estará sendo escutado na porta indicada na IDE. Geralmente, trata-se da porta 8080.
 
 ___
-
+<a name="Dependências"></a>
 ## 🏁 Dependências  
-<a name="Dependências">
-</a>
 
 Foram utilizadas no projeto as seguintes dependências:
 
@@ -102,10 +104,10 @@ Foram utilizadas no projeto as seguintes dependências:
 
 ___
 
+<a name="Coleção-de-Requisições"></a>
+
 ## 🌙 Coleção de Requisições 
 
-<a name="Coleção-de-Requisições">
-</a>
 
 /////A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-spring.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia./////
 
