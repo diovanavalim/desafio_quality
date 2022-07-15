@@ -68,9 +68,8 @@ public class PropertyService implements IPropertyService {
         List<RoomAreaDto> result = calculatePropertyArea(property);
         return result;
     }
-    
-    @Override
-    public PropertyDto saveProperty(Property property) {
+
+    private static void saveNonExistentDistrict(Property property, DistrictRepository districtRepository){
         District district = property.getPropDistrict();
 
         List<District> districtList = districtRepository.getAllDistrict();
@@ -84,7 +83,9 @@ public class PropertyService implements IPropertyService {
         if (districtAlreadyExists.size() == 0) {
             districtRepository.saveDistrict(district);
         }
+    }
 
+    private static long generateNewLastId (PropertyRepository propertyRepository) {
         List<Property> propertyList = propertyRepository.getAllProperty();
 
         int lastIndex = 0;
@@ -94,8 +95,37 @@ public class PropertyService implements IPropertyService {
             lastIndex = propertyList.size() - 1;
             propertyId = propertyList.get(lastIndex).getId() + 1;
         }
-
-        property.setId(propertyId);
+        return propertyId;
+    }
+    
+    @Override
+    public PropertyDto saveProperty(Property property) {
+//        District district = property.getPropDistrict();
+//
+//        List<District> districtList = districtRepository.getAllDistrict();
+//
+//        List<District> districtAlreadyExists = districtList
+//                .stream()
+//                .filter(existentDistrict -> existentDistrict.getName().equals(district.getName()) &&
+//                        existentDistrict.getCity().equals(district.getCity()))
+//                .collect(Collectors.toList());
+//
+//        if (districtAlreadyExists.size() == 0) {
+//            districtRepository.saveDistrict(district);
+//        }
+        saveNonExistentDistrict(property, districtRepository);
+//        List<Property> propertyList = propertyRepository.getAllProperty();
+//
+//        int lastIndex = 0;
+//        long propertyId = 1;
+//
+//        if (propertyList.size() != 0) {
+//            lastIndex = propertyList.size() - 1;
+//            propertyId = propertyList.get(lastIndex).getId() + 1;
+//        }
+//
+        Long nextId = generateNewLastId(propertyRepository);
+        property.setId(nextId);
 
         Property insertedProperty = propertyRepository.saveProperty(property);
 
