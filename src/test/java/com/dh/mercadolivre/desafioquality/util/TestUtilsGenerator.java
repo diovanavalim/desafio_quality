@@ -1,6 +1,8 @@
 package com.dh.mercadolivre.desafioquality.util;
 
+import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
+import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.model.Room;
@@ -9,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TestUtilsGenerator {
-
 
     public static Property createPropertyWithId() {
         District district = new District("Ipiranga", "São José", 1000.0);
@@ -47,7 +48,6 @@ public class TestUtilsGenerator {
         roomList.add(room4);
         PropertyDto propertyDto = new PropertyDto("Marcos", district, roomList, 1L);
 
-
         /*
         return PropertyDto.builder()
                 .propName("Marcos")
@@ -58,6 +58,24 @@ public class TestUtilsGenerator {
         return propertyDto;
     }
 
+    public static Double getDoubleReturn() {
+        return 1000.00;
+    }
 
+    public static RoomAreaDto getRoomAreaDto() {
+        RoomAreaDto room = new RoomAreaDto("Bedroom", 15.00);
+        return  room;
+    }
 
+    public static List<RoomAreaDto> getListRoomDto() {
+        RoomAreaDto room = new RoomAreaDto("Bedroom", 15.00);
+        List<RoomAreaDto> listRoomAreaDto = new ArrayList<>();
+        listRoomAreaDto.add(room);
+        return listRoomAreaDto;
+    }
+
+    public static DefaultServerResponseDto returnResponseDto() {
+        DefaultServerResponseDto responseDto = new DefaultServerResponseDto("Property successfully deleted", "200");
+        return responseDto;
+    }
 }
