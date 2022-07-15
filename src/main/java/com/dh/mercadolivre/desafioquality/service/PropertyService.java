@@ -108,30 +108,8 @@ public class PropertyService implements IPropertyService {
     
     @Override
     public PropertyDto saveProperty(Property property) {
-//        District district = property.getPropDistrict();
-//
-//        List<District> districtList = districtRepository.getAllDistrict();
-//
-//        List<District> districtAlreadyExists = districtList
-//                .stream()
-//                .filter(existentDistrict -> existentDistrict.getName().equals(district.getName()) &&
-//                        existentDistrict.getCity().equals(district.getCity()))
-//                .collect(Collectors.toList());
-//
-//        if (districtAlreadyExists.size() == 0) {
-//            districtRepository.saveDistrict(district);
-//        }
         saveNonExistentDistrict(property, districtRepository);
-//        List<Property> propertyList = propertyRepository.getAllProperty();
-//
-//        int lastIndex = 0;
-//        long propertyId = 1;
-//
-//        if (propertyList.size() != 0) {
-//            lastIndex = propertyList.size() - 1;
-//            propertyId = propertyList.get(lastIndex).getId() + 1;
-//        }
-//
+
         Long nextId = generateNewLastId(propertyRepository);
         property.setId(nextId);
 
