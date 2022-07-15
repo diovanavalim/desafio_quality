@@ -1,13 +1,15 @@
 package com.dh.mercadolivre.desafioquality.service;
 
+import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
-import com.dh.mercadolivre.desafioquality.utils.TestUtilsGenerator;
+import com.dh.mercadolivre.desafioquality.util.TestUtilsGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -54,8 +56,7 @@ class PropertyServiceTest {
         BDDMockito.when(districtRepository.getAllDistrict())
                 .thenReturn(TestUtilsGenerator.generateNewDistrictList());
 
-        BDDMockito.when(districtRepository.saveDistrict(ArgumentMatchers.any(District.class)))
-                .thenReturn(TestUtilsGenerator.generateNewDistrict());
+        BDDMockito.doNothing().when(districtRepository).saveDistrict(ArgumentMatchers.any(District.class));
 
         BDDMockito.when(propertyRepository.saveProperty(ArgumentMatchers.any(Property.class)))
                 .thenAnswer(i -> i.getArguments()[0]);
@@ -142,9 +143,10 @@ class PropertyServiceTest {
     void deleteProperty() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
 
-        boolean result = service.deleteProperty(newProperty.getId());
+        DefaultServerResponseDto result = service.deleteProperty(newProperty.getId());
 
-        assertThat(result).isTrue();
+        assertThat(result.getMessage()).isEqualTo("Property successfully deleted");
+        assertThat(result.getStatus()).isEqualTo("OK");
         verify(propertyRepository, atLeastOnce()).getAllProperty();
         verify(propertyRepository, atLeastOnce()).deleteProperty(0);
     }
@@ -153,9 +155,11 @@ class PropertyServiceTest {
     @DisplayName("Testa se retorna false quando a propriedade nao existe")
     void deletePropertyWhenPropertyNotExist() {
 
-        boolean result = service.deleteProperty(2L);
+        PropertyNotFoundException exception = Assertions.assertThrows(PropertyNotFoundException.class, () -> {
+            DefaultServerResponseDto result = service.deleteProperty(2L);
+        });
 
-        assertThat(result).isFalse();
+        assertThat(exception.getMessage()).contains("Could not find property for id");
         verify(propertyRepository, atLeastOnce()).getAllProperty();
         verify(propertyRepository, never()).deleteProperty(ArgumentMatchers.anyInt());
     }
