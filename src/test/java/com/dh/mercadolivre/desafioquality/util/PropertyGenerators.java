@@ -25,13 +25,11 @@ public class PropertyGenerators {
     }
 
     public static District getDistrict() {
-        District district = District.builder()
+        return District.builder()
                 .name("Trindade")
                 .city("Florianopolis")
                 .valueDistrictM2(900.00)
                 .build();
-
-        return district;
     }
 
     public static List<Property> getPropertyList() {
@@ -71,13 +69,11 @@ public class PropertyGenerators {
         List<Room> roomList = getRoomList();
         District district = getDistrict();
 
-        Property property = Property.builder()
+        return Property.builder()
                 .propName("Apartamento Granville")
                 .propDistrict(district)
                 .roomList(roomList)
                 .id(4)
                 .build();
-
-        return property;
     }
 }
