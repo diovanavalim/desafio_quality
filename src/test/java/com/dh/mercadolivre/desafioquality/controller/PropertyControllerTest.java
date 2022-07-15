@@ -65,7 +65,6 @@ class PropertyControllerTest {
     @DisplayName("Tests the method that saves a new property")
     void saveProperty() {
         Property newProperty = TestUtilsGenerator.createPropertyWithId();
-        System.out.println(newProperty.getPropName());
 
         ResponseEntity<PropertyDto> response = controller.saveProperty(newProperty);
 
