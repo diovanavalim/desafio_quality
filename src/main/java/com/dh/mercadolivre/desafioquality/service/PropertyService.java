@@ -3,6 +3,8 @@ package com.dh.mercadolivre.desafioquality.service;
 import com.dh.mercadolivre.desafioquality.dto.DefaultServerResponseDto;
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
 
+import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
+import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +40,14 @@ public class PropertyService implements IPropertyService {
 
     // método que calcula o preço do metro quadrado de acordo com a vizinhança
     public Double calculateTotalPropertyPrice(Long idProperty) {
+        List<District> listDistrict = districtRepository.getAllDistrict();
         Property property = propertyRepository.getProperty(idProperty);
+        List<District> result = listDistrict.stream().filter((district)-> district.getName().equals(property.getPropDistrict().getName())).collect(Collectors.toList());
+
+        if(result.size() == 0) {
+            throw new DistrictNotFoundException("District Not Found");
+        }
+
         return property.getPropDistrict().getValueDistrictM2() * getAreaTotal(idProperty);
     }
 
@@ -70,9 +79,8 @@ public class PropertyService implements IPropertyService {
         List<RoomAreaDto> result = calculatePropertyArea(property);
         return result;
     }
-    
-    @Override
-    public PropertyDto saveProperty(Property property) {
+
+    private static void saveNonExistentDistrict(Property property, DistrictRepository districtRepository){
         District district = property.getPropDistrict();
 
         List<District> districtList = districtRepository.getAllDistrict();
@@ -86,7 +94,9 @@ public class PropertyService implements IPropertyService {
         if (districtAlreadyExists.size() == 0) {
             districtRepository.saveDistrict(district);
         }
+    }
 
+    private static long generateNewLastId (PropertyRepository propertyRepository) {
         List<Property> propertyList = propertyRepository.getAllProperty();
 
         int lastIndex = 0;
@@ -96,8 +106,15 @@ public class PropertyService implements IPropertyService {
             lastIndex = propertyList.size() - 1;
             propertyId = propertyList.get(lastIndex).getId() + 1;
         }
+        return propertyId;
+    }
+    
+    @Override
+    public PropertyDto saveProperty(Property property) {
+        saveNonExistentDistrict(property, districtRepository);
 
-        property.setId(propertyId);
+        Long nextId = generateNewLastId(propertyRepository);
+        property.setId(nextId);
 
         Property insertedProperty = propertyRepository.saveProperty(property);
 
@@ -122,11 +139,13 @@ public class PropertyService implements IPropertyService {
                 indexOfProperty = i;
             }
         }
-        boolean hasBeenDeleted = propertyRepository.deleteProperty(indexOfProperty);
 
         if (indexOfProperty == -1) {
-            hasBeenDeleted = false;
+            throw new PropertyNotFoundException(String.format("Could not find property for id %d", id));
         }
+
+        boolean hasBeenDeleted = propertyRepository.deleteProperty(indexOfProperty);
+
 
         String message = hasBeenDeleted ? "Property successfully deleted" : "Could not delete property";
         HttpStatus httpStatus = hasBeenDeleted ? HttpStatus.OK : HttpStatus.BAD_REQUEST;

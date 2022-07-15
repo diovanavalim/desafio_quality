@@ -1,1 +1,26 @@
-[]
+[ {
+  "propName" : "Rua Laura",
+  "propDistrict" : {
+    "name" : "Horto",
+    "city" : "Nova Iguacu",
+    "valueDistrictM2" : 900.0
+  },
+  "roomList" : [ {
+    "roomName" : "Bedroom",
+    "roomWidth" : 2.0,
+    "roomLength" : 1.5
+  }, {
+    "roomName" : "Bathroom",
+    "roomWidth" : 1.0,
+    "roomLength" : 0.5
+  }, {
+    "roomName" : "Kitchen",
+    "roomWidth" : 1.0,
+    "roomLength" : 1.5
+  }, {
+    "roomName" : "Corridor",
+    "roomWidth" : 3.0,
+    "roomLength" : 0.5
+  } ],
+  "id" : 1
+} ]

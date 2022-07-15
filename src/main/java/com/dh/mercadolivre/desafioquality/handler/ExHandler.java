@@ -1,5 +1,6 @@
 package com.dh.mercadolivre.desafioquality.handler;
 
+import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
 import com.dh.mercadolivre.desafioquality.exceptions.ExceptionDetails;
 import com.dh.mercadolivre.desafioquality.exceptions.PropertyNotFoundException;
 import com.dh.mercadolivre.desafioquality.exceptions.ServerException;
@@ -88,6 +89,19 @@ public class ExHandler {
         return new ResponseEntity<ExceptionDetails>(
                 ExceptionDetails.builder()
                         .title("Property Not Found")
+                        .message(exception.getMessage())
+                        .status(HttpStatus.NOT_FOUND.value())
+                        .timestamp(LocalDateTime.now())
+                        .build(),
+                HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(DistrictNotFoundException.class)
+    public ResponseEntity<ExceptionDetails> districtNotFoundHandler(DistrictNotFoundException exception) {
+
+        return new ResponseEntity<ExceptionDetails>(
+                ExceptionDetails.builder()
+                        .title("District Not Found")
                         .message(exception.getMessage())
                         .status(HttpStatus.NOT_FOUND.value())
                         .timestamp(LocalDateTime.now())
