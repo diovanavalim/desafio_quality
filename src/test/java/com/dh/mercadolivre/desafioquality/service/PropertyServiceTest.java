@@ -2,11 +2,13 @@ package com.dh.mercadolivre.desafioquality.service;
 
 import com.dh.mercadolivre.desafioquality.dto.PropertyDto;
 import com.dh.mercadolivre.desafioquality.dto.RoomAreaDto;
+import com.dh.mercadolivre.desafioquality.exceptions.DistrictNotFoundException;
 import com.dh.mercadolivre.desafioquality.model.District;
 import com.dh.mercadolivre.desafioquality.model.Property;
 import com.dh.mercadolivre.desafioquality.repository.DistrictRepository;
 import com.dh.mercadolivre.desafioquality.repository.PropertyRepository;
 import com.dh.mercadolivre.desafioquality.utils.TestUtilsGenerator;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,6 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -68,6 +71,24 @@ class PropertyServiceTest {
 
        assertThat(result).isEqualTo(5850.0);
        verify(propertyRepository, atLeastOnce()).getProperty(newProperty.getId()); 
+    }
+
+    @Test
+    @DisplayName("Testa funcao quando o District nao existe e dispara um Erro")
+    void calculateTotalPropertyPriceWhitoutDistrict() {
+        BDDMockito.when(districtRepository.getAllDistrict())
+                .thenReturn(new ArrayList<District>());
+
+        Property newProperty = TestUtilsGenerator.generateNewProperty();
+
+
+        DistrictNotFoundException exception = Assertions.assertThrows(DistrictNotFoundException.class, () -> {
+            Double result = service.calculateTotalPropertyPrice(newProperty.getId());
+        });
+
+        assertThat(exception.getMessage()).isEqualTo(String.format("District Not Found"));
+        verify(propertyRepository, atLeastOnce()).getProperty(newProperty.getId());
+        verify(districtRepository, atLeastOnce()).getAllDistrict();
     }
 
     @Test
