@@ -25,7 +25,10 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 
 /**
- * Method Constructor of the Constructor Class
+ * Class for objects of District type that contains attributes
+ * @author Diovana Valim
+ * @version 0.0.1
+ * @see javax.validation.constraints
  */
 @NoArgsConstructor
 public class District {

@@ -27,7 +27,10 @@ import java.util.List;
 @AllArgsConstructor
 
 /**
- * Method Constructor of the Constructor Class
+ * Class for objects of Property type that contains attributes
+ * @author Diovana Valim
+ * @version 0.0.1
+ * @see javax.validation.constraints
  */
 @NoArgsConstructor
 public class Property {
