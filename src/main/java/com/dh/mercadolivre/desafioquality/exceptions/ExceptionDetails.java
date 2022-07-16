@@ -10,7 +10,6 @@ import java.time.LocalDateTime;
  * @author Amanda Marinelli, Diovana Valim, Gabriela Azevedo, Rafael Cavalcante, Thiago Frozzi e Thiago Guimarães
  * @version 0.0.1
  */
-
 @Data
 @Builder
 public class ExceptionDetails {

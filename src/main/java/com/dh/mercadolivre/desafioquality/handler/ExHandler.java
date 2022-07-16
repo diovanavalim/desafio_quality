@@ -18,7 +18,6 @@ import java.time.LocalDateTime;
  * @author Diovana Valim, Gabriela Azevedo
  * @version 0.0.1
  */
-
 @ControllerAdvice
 public class ExHandler {
 
@@ -80,7 +79,7 @@ public class ExHandler {
 
     /**
      * Method that captures a PropertyNotFoundException and build a response to send through HTTP request.
-     * @param exception instance of NotFoundException class captured during the code execution flow.
+     * @param exception instance of PropertyNotFoundException class captured during the code execution flow.
      * @return a ResponseEntity containing details of the exception and a compatible HTTP status code.
      */
     @ExceptionHandler(PropertyNotFoundException.class)
@@ -96,6 +95,11 @@ public class ExHandler {
                 HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Method that captures a DistrictNotFoundException and build a response to send through HTTP request.
+     * @param exception instance of DistrictNotFoundException class captured during the code execution flow.
+     * @return a ResponseEntity containing details of the exception and a compatible HTTP status code.
+     */
     @ExceptionHandler(DistrictNotFoundException.class)
     public ResponseEntity<ExceptionDetails> districtNotFoundHandler(DistrictNotFoundException exception) {
 

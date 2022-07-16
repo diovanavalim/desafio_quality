@@ -64,7 +64,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa calculo do valor total do metro quadrado da propriedade")
+    @DisplayName("Test calculation of the property's square meter total value")
     void calculateTotalPropertyPrice() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
 
@@ -75,7 +75,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa funcao quando o District nao existe e dispara um Erro")
+    @DisplayName("Tests function when District does not exist and throws an Error")
     void calculateTotalPropertyPriceWhitoutDistrict() {
         BDDMockito.when(districtRepository.getAllDistrict())
                 .thenReturn(new ArrayList<District>());
@@ -93,7 +93,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa calculo da area total da propriedade")
+    @DisplayName("Tests a method that calculates the property total area")
     void getAreaTotal() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
 
@@ -104,7 +104,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa o maior comodo da propriedade")
+    @DisplayName("Test the largest room on the property")
     void getLargestRoomFromId() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
         RoomAreaDto largestRoom = TestUtilsGenerator.generateLargestRoom();
@@ -115,7 +115,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se retorna uma lista de RoomAreaDto")
+    @DisplayName("Tests if returns a list of RoomAreaDto")
     void getAreaRooms() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
         List<RoomAreaDto> listRoom = TestUtilsGenerator.generateListRoom();
@@ -127,7 +127,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se retorna uma Propriedade atraves do id")
+    @DisplayName("Tests if returns a Property through the id")
     void getProperty() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
 
@@ -139,7 +139,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se deleta e retorna true quando a propriedade existe")
+    @DisplayName("Tests if deletes and returns true when the property exists")
     void deleteProperty() {
         Property newProperty = TestUtilsGenerator.generateNewProperty();
 
@@ -152,7 +152,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se retorna false quando a propriedade nao existe")
+    @DisplayName("Tests if returns false when the property does not exist")
     void deletePropertyWhenPropertyNotExist() {
 
         PropertyNotFoundException exception = Assertions.assertThrows(PropertyNotFoundException.class, () -> {
@@ -165,7 +165,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se retorna PropertyDTO ao salvar com sucesso")
+    @DisplayName("Tests if returns PropertyDTO on successful save")
     void savePropertyWithSuccess() {
         Property propertyWithoutId = TestUtilsGenerator.generateNewPropertyWithoutId();
 
@@ -178,7 +178,7 @@ class PropertyServiceTest {
     }
 
     @Test
-    @DisplayName("Testa se retorna PropertyDTO ao salvar com sucesso e com District diferente")
+    @DisplayName("Tests if it returns PropertyDTO when saving successfully and with different District")
     void savePropertyWithSuccessAndNewDistrict() {
         Property propertyWithNewDistrict = TestUtilsGenerator.generateNewPropertyWithoutIdAndNewDistrict();
 
