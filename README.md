@@ -74,11 +74,11 @@ ___
 
 - Clone este repositório na sua máquina:
     
-      git clone https://github.com/diovanavalim/desafio_spring.git
+      git clone git@github.com:gabiazevedomeli/desafio_quality.git
 
 - Acesse a pasta do projeto no terminal:
 
-      cd desafio_spring
+      cd desafio_quality
 
 - Instale as dependências do projeto:
 
@@ -100,9 +100,9 @@ Foram utilizadas no projeto as seguintes dependências:
 
 - 🍃 Spring Boot Web;
 
-- 🌶️ Lombok;
-
 - 🍃 Spring Boot Stater Validations;
+
+- 🌶️ Lombok;
 
 ___
 
