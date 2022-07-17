@@ -16,7 +16,6 @@ import com.dh.mercadolivre.desafioquality.util.FileHandler;
  * @author Diovana Valim, Gabriela Azevedo
  * @version 0.0.1
  */
-
 @Repository
 @SuppressWarnings("unchecked")
 public class PropertyRepository {
