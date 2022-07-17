@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-
 /**
  * Class responsible for intermediating the requests sent by the user with the responses provided by the Service;
- *
  * @author Amanda Marinelli, Diovana Valim, Gabriela Azevedo, Thiago Guimarães, Thiago Frozzi, Rafael Cavalcante
  * @version 0.0.1
  */
@@ -29,11 +27,9 @@ public class PropertyController {
 
     /**
      * A post method responsible for save a new property at the DAO.
-     *
      * @param property a valid Property by the request body
      * @return Response Entity of type propertyDto and the corresponding HttpStatus;
      */
-
     @PostMapping("/property")
     public ResponseEntity<PropertyDto> saveProperty(@RequestBody @Valid Property property) {
         PropertyDto propertyDto = propertyService.saveProperty(property);
@@ -43,7 +39,6 @@ public class PropertyController {
 
     /**
      * A get method that when called will return in the body request a property with specified id, if it exists at the DAO
-     *
      * @param id a String Property by the URL request
      * @return Response Entity of type propertyDto and the corresponding HttpStatus ;
      */
@@ -58,7 +53,6 @@ public class PropertyController {
 
     /**
      * A get method that when called will delete a property with specified id, if it exists at the DAO
-     *
      * @param id a String Property by the URL request
      * @return Response Entity of type DefaultServerResponseDto and the corresponding HttpStatus
      */
