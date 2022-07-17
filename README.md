@@ -111,7 +111,7 @@ ___
 ## 🌙 Coleção de Requisições 
 
 
-/////A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-spring.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia./////
+/////A coleção de requisições utilizadas para testar os endpoints estão na pasta `src/main/resource`. O arquivo `Desafio-Quality.postman_collection.json` pode ser importado em algum cliente HTTP, como o Postman ou o Insomnia./////
 
 ---
 
